@@ -1,6 +1,6 @@
 # Curious-Muffin-Discord
 Curious Muffin (300000+ users) is a sophisticated multi-purpose Discord application developed using Python.
-Learn more about the application here: https://curiousmuffin.ml/
+Learn more about the application here: https://curiousmuffin.ml
 
 ### Important Notes
 - Stored user information and API Keys have been redacted to protect user privacy and application security.
