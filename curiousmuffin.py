@@ -20,7 +20,7 @@ intents.members = True
 client = discord.Client(intents=intents)
 
 def get_prefix(guild_id):
-    prefix_file = open('command_prefix.txt')
+    prefix_file = open('assets/command_prefix.txt')
     prefix_file.seek(0) 
     for line in prefix_file.readlines():
         line = line.split(',')
@@ -299,7 +299,7 @@ def save_information(prefix):
 def retrieve_info(msg, prefix):
   retrieve_information = msg.strip().split("/")
   if len(retrieve_information) == 2:
-    saved_information_file = open("information_storage.txt", "r")
+    saved_information_file = open("assets/information_storage.txt", "r")
     saved_information_file.seek(0)
     stored_password = str(retrieve_information[1]).strip()
     for line in saved_information_file:
@@ -564,7 +564,7 @@ async def on_guild_join(guild):
 
 @client.event
 async def on_guild_remove(guild):
-  prefix_file = open('command_prefix.txt', 'r+')
+  prefix_file = open('assets/command_prefix.txt', 'r+')
   read_only_prefix_file = prefix_file.read()
   prefix_file.seek(0)
   for line in read_only_prefix_file.split("\n"):
@@ -625,14 +625,6 @@ async def on_message(message):
 	if message == None or message.guild == None: return
 		
 	prefix = get_prefix(message.guild.id)
-
-  # if "discord.gg" in msg and message.guild.id == 814294614165028866:
-  #   if "https://discord.gg/ZvZmTUnWng" not in msg:
-  #     author = message.author.name
-  #     if message.channel.permissions_for(message.guild.me).send_messages:
-  #         if not(message.author.guild_permissions.manage_guild or message.author.guild_permissions.manage_roles):
-  #           await message.delete()
-  #           await msgc(f">>> **Sorry {author} - You cannot post that link here!**")
 
 	if msg.startswith(prefix) and message.channel.permissions_for(message.guild.me).send_messages:
 
@@ -985,7 +977,7 @@ async def on_message(message):
 
 		if msg.startswith(prefix + '2game'): 
 			channel = message.channel
-			cornyjokesfile = open("cornyjokes.txt")
+			cornyjokesfile = open("assets/cornyjokes.txt")
 			corny_jokes = {}
 			for line in cornyjokesfile:
 				(number,joke_question,joke_response) = line.strip().split("/")
@@ -1550,7 +1542,7 @@ async def on_message(message):
 			store_information = msg.strip().split("/")
 
 			if len(store_information) == 3:
-				saved_information_file = open("information_storage.txt", "a+")
+				saved_information_file = open("assets/information_storage.txt", "a+")
 				saved_information_file.seek(0)
 				stored_password = str(store_information[1]).strip()
 				stored_information = str(store_information[2]).strip()
@@ -1583,7 +1575,7 @@ async def on_message(message):
 		if msg.startswith(prefix + 'remove'):
 			remove_information = msg.strip().split("/")
 			if len(remove_information) == 2:
-				saved_information_file = open("information_storage.txt", "r+")
+				saved_information_file = open("assets/information_storage.txt", "r+")
 				read_only_file = saved_information_file.read()
 				saved_information_file.seek(0)
 				for line in read_only_file.split("\n"):
@@ -1662,7 +1654,7 @@ async def on_message(message):
 					elif new_prefix == "000":
 						await msgc("> Alright, nothing's been changed :slight_smile: ")
 					else:
-						prefix_file = open('command_prefix.txt', 'r+')
+						prefix_file = open('assets/command_prefix.txt', 'r+')
 						read_only_prefix_file = prefix_file.read()
 						prefix_file.seek(0)
 						for line in read_only_prefix_file.split("\n"):
@@ -1706,10 +1698,6 @@ async def on_message(message):
 		Use `{command_prefix}dev` for settings or feedback
 
 		""".format(command_prefix = prefix)
-
-		# new_update_category_help = """    
-		#   Use `{command_prefix}updates` to view what's new!
-		# """.format(command_prefix = prefix) 
 
 		if msg.startswith(prefix + 'help'):
 			embed=discord.Embed(title = client.user.name + " Help", color=discord.Colour.blue()) 
