@@ -602,9 +602,6 @@ async def on_ready():
     server_information_sheet.update_cell(5, 4, server_owner)
     server_information_sheet.update_cell(1,4, len(client.guilds))
 
-    # user_statistics_channel = client.get_channel(821986752364281866)
-    # await user_statistics_channel.edit(name='{}+ Users'.format(int(total_users)))
-
     print("Server Statistics Collected.")
   else:
     print("Server Statistics Not Collected.")
